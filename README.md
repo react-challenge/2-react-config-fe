@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+create-react-app 
+
+react(18) + antd(v5.8)
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import './App.scss';
+import MenuLeft from './components/MenuLeft';
 
 function App() {
+
+  const accountInfo = {}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header class="home-header">
+        <h1>zuo-config 配置中心</h1>
+        <div>
+          {accountInfo.name}
+          <a href="https://github.com/react-challenge/2-react-config-fe" target="_blank" rel="noreferrer">
+            Github
+          </a>
+        </div>
       </header>
+      <main class="home-main">
+        <nav class="home-main-left" v-if="!route.meta.hideLeftMenu">
+          <MenuLeft />
+        </nav>
+        <section
+          className="home-main-right { route.meta.hideLeftMenu ? 'hide-left-menu' : '' }"
+        >
+          {/* <RouterView /> */}
+        </section>
+      </main>
     </div>
   );
 }

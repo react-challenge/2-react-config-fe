@@ -1,0 +1,39 @@
+$header-height: 60px;
+$left-menu-width: 200px;
+
+.home-header {
+  height: $header-height;
+  box-shadow: 0 0 8px #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+
+  h1 {
+    color: #333;
+    font-size: 18px;
+  }
+}
+
+.home-main {
+  display: flex;
+  height: calc(100vh - $header-height);
+  min-height: 800px;
+
+  .home-main-left {
+    flex-basis: $left-menu-width;
+    flex-shrink: 0;
+    box-shadow: 0 0 5px #eee;
+  }
+
+  .home-main-right {
+    width: calc(100% - $left-menu-width);
+    padding: 20px;
+    box-sizing: border-box;
+
+    &.hide-left-menu {
+      width: 100%;
+    }
+  }
+}
