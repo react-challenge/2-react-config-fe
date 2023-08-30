@@ -10,6 +10,11 @@ $left-menu-width: 200px;
   padding: 20px;
   box-sizing: border-box;
 
+  a {
+    color: unset;
+    text-decoration: none;
+  }
+
   h1 {
     color: #333;
     font-size: 18px;
