@@ -1,0 +1,14 @@
+.login-view {
+    display: flex;
+    justify-content: center;
+
+    .ant-form {
+        margin-top: 80px;
+        max-width: 500px;
+    }
+}
+
+.tips {
+    width: 100%;
+    text-align: center;
+}

@@ -2,9 +2,13 @@
 import './App.scss';
 import MenuLeft from './components/MenuLeft';
 import { Outlet, useHref } from "react-router-dom";
+import { message } from 'antd'
+import axiosApi from "./utils/axios";
+import { useEffect } from 'react';
 
 function App() {
   const accountInfo = {}
+
   const curHref = useHref()
   const isShowMenu = () => {
     const hideMenuList = ['/login']
@@ -13,6 +17,28 @@ function App() {
     }
     return true
   }
+
+  // 获取用户信息
+  async function getUserInfo() {
+    try {
+      // await new Promise((resolve) => setTimeout(resolve, 2000)); // sleep, test loading
+      const res = await axiosApi.get("/user/info");
+      console.log("获取用户信息", res);
+      Object.assign(accountInfo, res.data);
+    } catch (e) {
+      console.error(e);
+      message.error(e.message);
+    }
+  };
+
+  useEffect(() => {
+    if (curHref === '/login') {
+      return
+    }
+    console.log('get user info')
+    getUserInfo()
+  })
+
   return (
     <div>
       <header className="home-header">
@@ -31,7 +57,7 @@ function App() {
           </nav>)
         }
         <section
-          className="home-main-right { route.meta.hideLeftMenu ? 'hide-left-menu' : '' }"
+          className={'home-main-right ' +  (isShowMenu() ? '' : 'hide-left-menu') }
         >
           <Outlet />
         </section>
