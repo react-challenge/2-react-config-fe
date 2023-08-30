@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.account-name {
+  color: #fff;
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 10px;
+  background-color: rgba(0, 0, 255, .6);
+  padding: 5px;
+  transform: scale(0.8);
+  display: inline-block;
+}

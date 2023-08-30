@@ -5,9 +5,12 @@ import { Outlet, useHref } from "react-router-dom";
 import { message } from 'antd'
 import axiosApi from "./utils/axios";
 import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { setAccoutInfo, selectAccoutInfo } from './store/globalState'
 
 function App() {
-  const accountInfo = {}
+  const accountInfo = useSelector(selectAccoutInfo)
+  const dispatch = useDispatch()
 
   const curHref = useHref()
   const isShowMenu = () => {
@@ -24,7 +27,7 @@ function App() {
       // await new Promise((resolve) => setTimeout(resolve, 2000)); // sleep, test loading
       const res = await axiosApi.get("/user/info");
       console.log("获取用户信息", res);
-      Object.assign(accountInfo, res.data);
+      dispatch(setAccoutInfo(res.data || {}))
     } catch (e) {
       console.error(e);
       message.error(e.message);
@@ -43,8 +46,9 @@ function App() {
     <div>
       <header className="home-header">
         <h1><a href="/">zuo-config 配置中心</a></h1>
+        {/* <div>{JSON.stringify(accountInfo)}</div> */}
         <div>
-          {accountInfo.name}
+          <span className="name">{accountInfo.name}</span>
           <a href="https://github.com/react-challenge/2-react-config-fe" target="_blank" rel="noreferrer">
             Github
           </a>

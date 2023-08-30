@@ -1,6 +1,8 @@
 import { Menu } from 'antd';
 import { useEffect } from 'react';
 import { useNavigate, useHref } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { selectAccoutInfo } from '../store/globalState'
 
 const menuItems = [
   { key: '/short-link', label: '短连接配置' },
@@ -11,6 +13,7 @@ export default function MenuLeft() {
   const navigate = useNavigate();
   const curHref = useHref()
   let activeKey = curHref === '/' ? '/short-link' : curHref
+  const accountInfo = useSelector(selectAccoutInfo)
 
   const onClick = (e) => {
     console.log('click ', e);
@@ -24,12 +27,16 @@ export default function MenuLeft() {
   })
 
   return (
-    <Menu
-      style={{ width: 256 }}
-      defaultSelectedKeys={[activeKey]}
-      mode="inline"
-      items={menuItems}
-      onClick={onClick}
-    />
+    <div>
+      <Menu
+        style={{ width: 256 }}
+        defaultSelectedKeys={[activeKey]}
+        mode="inline"
+        items={menuItems}
+        onClick={onClick}
+      />
+      {/* 状态管理测试 */}
+      <span className="account-name">{accountInfo.name}</span>
+    </div>
   );
 }

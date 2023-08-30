@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 create-react-app 
 
-react(v18.2) + antd(v5.8) + react-router(v6.15)
+react(v18.2) + antd(v5.8) + react-router(v6.15) + axios + react-redux
 
 ## Available Scripts
 

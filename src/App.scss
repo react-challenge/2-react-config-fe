@@ -11,8 +11,16 @@ $left-menu-width: 200px;
   box-sizing: border-box;
 
   a {
-    color: unset;
+    color: #2d4fea;
     text-decoration: none;
+  }
+
+  h1 a {
+    color: unset;
+  }
+
+  .name {
+    margin-right: 15px;
   }
 
   h1 {
