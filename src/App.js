@@ -57,7 +57,7 @@ function App() {
           </nav>)
         }
         <section
-          className={'home-main-right ' +  (isShowMenu() ? '' : 'hide-left-menu') }
+          className={'home-main-right ' + (isShowMenu() ? '' : 'hide-left-menu')}
         >
           <Outlet />
         </section>

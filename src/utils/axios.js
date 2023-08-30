@@ -49,7 +49,7 @@ instance.interceptors.response.use(
         const { code, msg, plainMsg } = response.data;
 
         if (code !== 0) {
-            message.error( plainMsg ? `${msg}: ${plainMsg}` : msg
+            message.error(plainMsg ? `${msg}: ${plainMsg}` : msg
             );
             // 如果是没有登录，跳转到登录页面
             if (code === NOT_LOGIN_CODE) {
