@@ -4,7 +4,7 @@ import MenuLeft from './components/MenuLeft';
 import { Outlet, useHref } from "react-router-dom";
 import { message } from 'antd'
 import axiosApi from "./utils/axios";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { setAccoutInfo, selectAccoutInfo } from './store/globalState'
 
@@ -34,13 +34,15 @@ function App() {
     }
   };
 
+  let [isMounted, setIsMounted] = useState(false)
   useEffect(() => {
-    if (curHref === '/login') {
-      return
+    if (curHref !== '/login' && !isMounted) {
+      console.log('get user info')
+      getUserInfo()
+      setIsMounted(true)
     }
-    console.log('get user info')
-    getUserInfo()
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [curHref, isMounted])
 
   return (
     <div>
