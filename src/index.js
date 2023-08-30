@@ -27,7 +27,10 @@ const router = createBrowserRouter([
         {
           path: "/login",
           element: <Login />,
-          meta: { requiresAuth: false, hideLeftMenu: true },
+          handler: {
+            requiresAuth: false, hideLeftMenu: true
+          },
+          // meta: { requiresAuth: false, hideLeftMenu: true },
         },
     ]
   },

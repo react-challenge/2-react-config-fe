@@ -1,11 +1,18 @@
 // import logo from './logo.svg';
 import './App.scss';
 import MenuLeft from './components/MenuLeft';
-import { Outlet } from "react-router-dom";
+import { Outlet, useHref } from "react-router-dom";
 
 function App() {
-
   const accountInfo = {}
+  const curHref = useHref()
+  const isShowMenu = () => {
+    const hideMenuList = ['/login']
+    if (hideMenuList.includes(curHref)) {
+      return false
+    }
+    return true
+  }
   return (
     <div>
       <header className="home-header">
@@ -18,9 +25,11 @@ function App() {
         </div>
       </header>
       <main className="home-main">
-        <nav className="home-main-left" v-if="!route.meta.hideLeftMenu">
-          <MenuLeft />
-        </nav>
+        {isShowMenu() &&
+          (<nav className="home-main-left">
+            <MenuLeft />
+          </nav>)
+        }
         <section
           className="home-main-right { route.meta.hideLeftMenu ? 'hide-left-menu' : '' }"
         >
