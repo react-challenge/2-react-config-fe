@@ -12,6 +12,8 @@ import Login from './views/Login';
 import ShortLink from './views/ShortLink';
 import { store } from './store/index'
 import { Provider } from 'react-redux'
+import zhCN from 'antd/locale/zh_CN'
+import { ConfigProvider } from 'antd'
 
 const router = createBrowserRouter([
   {
@@ -42,7 +44,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ConfigProvider locale={zhCN}>
+        <RouterProvider router={router} />
+      </ConfigProvider>
     </Provider>
   </React.StrictMode>
 );
