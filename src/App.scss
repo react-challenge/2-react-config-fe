@@ -1,6 +1,11 @@
 $header-height: 60px;
 $left-menu-width: 200px;
 
+a {
+  color: #2d4fea;
+  text-decoration: none;
+}
+
 .home-header {
   height: $header-height;
   box-shadow: 0 0 8px #ddd;
@@ -9,11 +14,6 @@ $left-menu-width: 200px;
   justify-content: space-between;
   padding: 20px;
   box-sizing: border-box;
-
-  a {
-    color: #2d4fea;
-    text-decoration: none;
-  }
 
   h1 a {
     color: unset;

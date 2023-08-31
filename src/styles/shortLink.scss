@@ -1,18 +1,21 @@
-.sl-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
+.short-link-page {
+    .sl-top {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+    }
 
-.pagination-wrap {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 20px;
-}
+    .pagination-wrap {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 20px;
+    }
 
-.tips {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 5px #eee;
+    .tips {
+        margin-bottom: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 5px #eee;
+        font-size: 13px;
+    }
 }

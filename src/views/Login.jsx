@@ -43,7 +43,7 @@ export default function Login() {
     };
 
     return (
-        <>
+        <div className="login-page">
             <div className="tips">游客体验账号: 用户名 admin, 密码 admin</div>
             {loading}
             {/* {accountInfo} */}
@@ -81,6 +81,6 @@ export default function Login() {
                     </Form.Item>
                 </Form>
             </div>
-        </>
+        </div>
     )
 }

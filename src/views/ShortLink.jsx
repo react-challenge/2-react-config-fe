@@ -27,7 +27,7 @@ export default function ShortLink() {
     }
 
     return (
-        <div className="short-link">
+        <div className="short-link-page">
             <div className="tips">
                 配置成功后，可以通过 GET 请求
                 {apiUrl} 接口获取配置数据。具体应用参考：
