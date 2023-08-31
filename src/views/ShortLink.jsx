@@ -55,7 +55,6 @@ export default function ShortLink() {
                     >
                         <Button type="link">删除</Button>
                     </Popconfirm>
-
                 </Space>
             ),
         }
