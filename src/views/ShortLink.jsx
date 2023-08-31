@@ -1,7 +1,7 @@
 import { CONFIG_ENV } from '../config/env.js'
 import { useSelector } from 'react-redux'
 import { selectAccoutInfo } from '../store/globalState'
-import { Input, Button, Table, Space, message, Pagination } from 'antd'
+import { Input, Button, Table, Space, message, Pagination, Popconfirm } from 'antd'
 import { debounce } from "lodash-es";
 import '../styles/shortLink.scss'
 import { useEffect, useState } from 'react';
@@ -45,7 +45,17 @@ export default function ShortLink() {
             title: '操作', key: 'opt', render: (_, record) => (
                 <Space size="middle">
                     <Button type="link" onClick={() => editShortLink(record)}>修改</Button>
-                    <Button type="link" onClick={() => deleteShortLink(record)}>删除</Button>
+                    <Popconfirm
+                        title="删除确认"
+                        description="您确认要删除该短链接配置吗"
+                        onConfirm={() => deleteShortLink(record)}
+                        onCancel={() => { }}
+                        okText="确定"
+                        cancelText="取消"
+                    >
+                        <Button type="link">删除</Button>
+                    </Popconfirm>
+
                 </Space>
             ),
         }
@@ -91,8 +101,19 @@ export default function ShortLink() {
         // eslint-disable-next-line
     }, [])
 
-    function deleteShortLink(record) {
-        console.log('deleteShortLink', record)
+    // button 自带 loading 效果， 666
+    async function deleteShortLink(record) {
+        try {
+            // await new Promise((resolve) => setTimeout(resolve, 2000)); // sleep, test loading
+            const res = await axiosApi.post("/shortLink/del", {
+                _id: record?._id,
+            });
+            console.log(res);
+            message.success("删除成功！");
+            getList(1, 20); // 刷新列表
+        } catch (e) {
+            message.error(e.message);
+        }
     }
 
     function onPaginationChange(number, size) {
