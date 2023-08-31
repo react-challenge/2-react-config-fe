@@ -3,6 +3,15 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 15px;
+
+        .sl-top-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .stl-label {
+            width: 120px;
+        }
     }
 
     .pagination-wrap {
@@ -16,6 +25,5 @@
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0 0 5px #eee;
-        font-size: 13px;
     }
 }
