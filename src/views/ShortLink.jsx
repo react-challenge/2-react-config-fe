@@ -6,6 +6,7 @@ import { debounce } from "lodash-es";
 import '../styles/shortLink.scss'
 import { useEffect, useState } from 'react';
 import axiosApi from '../utils/axios.js'
+import ShortLinkAdd from './ShortLinkAdd.jsx';
 
 export default function ShortLink() {
     const accountInfo = useSelector(selectAccoutInfo)
@@ -17,15 +18,23 @@ export default function ShortLink() {
     let queryText = ""
     const queryChange = (e) => {
         console.log("queryChange", e.target.value);
-        queryText = e.target.value
+        queryText = e.target.value.trim()
         console.log(queryText)
         resetPage();
         getList(1, 20);
     };
     const queryChangeDebounce = debounce(queryChange, 300);
 
+    const [isOpenEditDialog, setIsOpenEditDialog] = useState(false)
+    const [editData, setEditData] = useState({})
     function addShortLink() {
-
+        setEditData({})
+        setIsOpenEditDialog(true)
+    }
+    function editShortLink(record) {
+        console.log('editShortLink', record)
+        setEditData(record)
+        setIsOpenEditDialog(true)
     }
 
     const columns = [
@@ -79,11 +88,8 @@ export default function ShortLink() {
     };
     useEffect(() => {
         getList()
+        // eslint-disable-next-line
     }, [])
-
-    function editShortLink(record) {
-        console.log('editShortLink', record)
-    }
 
     function deleteShortLink(record) {
         console.log('deleteShortLink', record)
@@ -99,7 +105,6 @@ export default function ShortLink() {
         setCurrentPage(1)
         setPageSize(20)
     }
-
 
     return (
         <div className="short-link-page">
@@ -140,6 +145,14 @@ export default function ShortLink() {
                     onChange={onPaginationChange}
                 />
             </div>
+
+            {isOpenEditDialog &&
+                <ShortLinkAdd
+                    isOpenEditDialog={isOpenEditDialog}
+                    setIsOpenEditDialog={setIsOpenEditDialog}
+                    editData={editData}
+                    handleOk={(isEdit) => isEdit ? getList() : getList(1, 20)}
+                />}
         </div>
     )
 }
